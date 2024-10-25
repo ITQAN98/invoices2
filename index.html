@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display Page</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        .sortable:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Company & Group Name</th>
+                    <th>Weight</th>
+                    <th>Image</th>
+                    <th>Color</th>
+                    <th>Description</th>
+                    <th>(EXW Shenzhen) Unit Price</th>
+                    <th class="sortable" onclick="sortTable()">Quantity</th>
+                    <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody id="product-body">
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>27 kg</td>
+                    <td><img src="./img/1.png" alt="GA-E200I"></td>
+                    <td>Grey</td>
+                    <td>all in one pc, capacitive touch screen, i5 gen12, FHD, 8GB+512GB, up-down stand</td>
+                    <td class="price">$454.00</td>
+                    <td class="quantity">4</td>
+                    <td class="total-value">$1,816.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>27 kg</td>
+                    <td><img src="./img/2.jpg" alt="B300"></td>
+                    <td>Grey</td>
+                    <td>all in one pc, NO TOUCH, i5 gen12, FHD, 8GB+512GB, up-down stand</td>
+                    <td class="price">$378.00</td>
+                    <td class="quantity">4</td>
+                    <td class="total-value">$1,512.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>27 kg</td>
+                    <td><img src="./img/3.png" alt="GA-2408TE"></td>
+                    <td>blue+green+yellow+orange</td>
+                    <td>monitors, FHD 144HZ, UP-DOWN stand</td>
+                    <td class="price">$137.00</td>
+                    <td class="quantity">10</td>
+                    <td class="total-value">$1,370.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>27 kg</td>
+                    <td><img src="./img/printer.jpeg" alt="GA-G200"></td>
+                    <td>Pantone 233C</td>
+                    <td>monitors, FHD 144HZ, UP-DOWN stand</td>
+                    <td class="price">$167.00</td>
+                    <td class="quantity">2</td>
+                    <td class="total-value">$334.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>15.6 kg</td>
+                    <td><img src="./img/4.png" alt="GA-E200I"></td>
+                    <td>silver+gray</td>
+                    <td>Laptop, mental, i3 gen12, 8GB+256GB</td>
+                    <td class="price">$385.00</td>
+                    <td class="quantity">9</td>
+                    <td class="total-value">$3,465.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>15.6 kg</td>
+                    <td><img src="./img/Screenshot 2024-10-25 053550.png" alt="all-in-one-pc"></td>
+                    <td>black</td>
+                    <td>POS, 15.6+11.6 dual screen, i5 gen 6, 8GB+256GB, wifi bluetooth, speaker, capacitive touch</td>
+                    <td class="price">$275.00</td>
+                    <td class="quantity">5</td>
+                    <td class="total-value">$1,375.00</td>
+                </tr>
+                <tr>
+                    <td><strong>SHENZHEN HOPESTAR SCI-TECH</strong><br>all in one pc</td>
+                    <td>15.6 kg</td>
+                    <td><img src="./img/pic9.jpeg" alt="all-in-one-pc"></td>
+                    <td>black</td>
+                    <td>POS, 15.6 inch single screen, i5 gen 6, 8GB+256GB, wifi bluetooth, speaker, capacitive touch</td>
+                    <td class="price">$243.00</td>
+                    <td class="quantity">4</td>
+                    <td class="total-value">$972.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function sortTable() {
+            const tbody = document.getElementById('product-body');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+
+            // فرز الصفوف حسب الكمية
+            const sortedRows = rows.sort((a, b) => {
+                const qtyA = parseInt(a.querySelector('.quantity').innerText) || 0;
+                const qtyB = parseInt(b.querySelector('.quantity').innerText) || 0;
+                return qtyB - qtyA; // ترتيب تنازلي
+            });
+
+            // تنظيف tbody وإضافة الصفوف المرتبة
+            tbody.innerHTML = ''; // تنظيف tbody
+            sortedRows.forEach(row => tbody.appendChild(row)); // إضافة الصفوف المرتبة
+        }
+    </script>
+</body>
+</html>
